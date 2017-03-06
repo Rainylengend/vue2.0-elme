@@ -150,16 +150,15 @@
       recordCache(_amount, index, id, name, price){
         //购物车详情
         let cache = this.$store.state.cache;
+        
         if (!cache[this.sellerId - 1][id]) {
           cache[this.sellerId - 1][id] = {};
-          cache[this.sellerId - 1][id].name = name;
-          cache[this.sellerId - 1][id].amount = _amount[index[0]][index[1]];
-          cache[this.sellerId - 1][id].price = price;
-        } else {
-          cache[this.sellerId - 1][id].name = name;
-          cache[this.sellerId - 1][id].amount = _amount[index[0]][index[1]];
-          cache[this.sellerId - 1][id].price = price;
         }
+        
+        cache[this.sellerId - 1][id].name = name;
+        cache[this.sellerId - 1][id].amount = _amount[index[0]][index[1]];
+        cache[this.sellerId - 1][id].price = price;
+     
         this.$Storage.cache = JSON.stringify(cache);
         this.$store.commit('initCache', cache);
       },
